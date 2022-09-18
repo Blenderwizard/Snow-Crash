@@ -2,7 +2,7 @@
  
 ## Info
  
-User level11 has a setuid (flag11) lua `level11.lua` in the root of their home directory.
+User `level11` has a setuid `flag11` lua script `level11.lua` in the root of their home directory.
  
 `level11.lua`
 ``` lua
@@ -42,10 +42,18 @@ while 1 do
 end
 ```
  
-Attempting to execute `level11.lua` errors out in a failure port already in use, using nc we can indeed connect to the server. We can decrypt the hash, giving us the password NotSoEasy, but that will neither give us the flag through the program nor is the password for flag11 user.
+Attempting to execute `level11.lua` errors out in a failure port already in use, using nc we can indeed connect to the server. 
+
+We can decrypt the hash, giving us the password `NotSoEasy`, but that will neither give us the flag through the program nor is the password for `flag11` user.
+
+## Netcat
+
+We can use `nc 127.0.0.1 5151` to connect to the script. The connection asks us for a password, entering anything gets returns us `Erf nope..`, entering `NotSoEasy` gets us `Gz you dumb*`.
  
 ## Victory
  
-We can simply force the server to execute getflag and store the file somewhere temporarily. Example: `\";getflag > /tmp/flag;\"`
+We can simply force the server to execute `getflag` and store the file somewhere temporarily. We do this by passing `\";getflag > /tmp/flag;\"` when the program asks us for the password.
+
+Cating out `/tmp/flag` gets us the flag.
  
 

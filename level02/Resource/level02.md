@@ -1,5 +1,14 @@
 # Level02 Writeup
 
-# Info 
+## Info 
 
-User level02 has a single `level02.pcap` file within his home directory. Opening the pcap file with wireshark shows communication between two IPs. Analyzing each packet's data we see that at one point a machine sends a prompt for a login. Packet by packet we can see the response to the prompt and reconstruct the password "ft_waNDReL0L", allowing us to log into the flag02 user and get the flag.
+`level02` has a single file `level02.pcap` within their home directory. This file is a capture of network packets, and can be opened with a program like `Wireshark`.
+
+
+## Wireshark
+
+Opening the file with Wireshark shows communication between two hosts. Analyzing each of the packet's data we see that at one point one of the hosts sends a prompt for a login. Packet by packet we can reconstruct the response, the password `ft_waNDReL0L`.
+
+## Victory
+
+Loging into `flag02` with password `ft_waNDReL0L` and running `getflag` grabs the flag.

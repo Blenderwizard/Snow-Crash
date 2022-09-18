@@ -2,7 +2,7 @@
  
 ## Info
  
-User level14 has nothing within their home directory. Using the find command finds nothing and searching in folders such as /var/mail and env variables also shows nothing. Only one thing left to do, reverse the getflag binary.
+User `level14` has nothing within their home directory. Using the find command finds nothing and searching in folders such as `/var/mail` and `env` variables also shows nothing. Only one thing left to do, reverse and exploit the `getflag` binary.
  
 ## getflag
 Using `getflag`, we can decompile getflag and see what's happening.
@@ -155,7 +155,6 @@ LAB_08048ead:
  if (local_14 == *(int *)(in_GS_OFFSET + 0x14)) {
    return uVar3;
  }
-                   /* WARNING: Subroutine does not return */
  __stack_chk_fail();
 }
  

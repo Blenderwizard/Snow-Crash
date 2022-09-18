@@ -2,7 +2,7 @@
  
 ## Info
 
-User level06 has a setuid (flag06) ELF binary `level06` for the user and a `level06.php` php file.
+User level06 has a setuid `flag06` ELF binary `level06` for the user and a `level06.php` php file.
  
 `level06.php`
 ``` php
@@ -24,12 +24,12 @@ User level06 has a setuid (flag06) ELF binary `level06` for the user and a `leve
 ?>
 ```
  
-Using a tool like ghidra, we can decompile the `level06` binary and take a look at the c source code.
+Using a tool like `ghidra`, we can decompile the `level06` binary and take a look at the source code.
 
 `level06`
 ``` c
 int main(undefined4 param_1,int param_2,char **param_3) {
-   char **__envp;
+   char **__envp; // ghidra mess
    __gid_t __rgid;
    __uid_t __ruid;
    char *php;
@@ -52,11 +52,11 @@ int main(undefined4 param_1,int param_2,char **param_3) {
            argv2 = strdup(*(char **)(argv + 8));
        }
    }
-   __rgid = getegid();
+   __rgid = getegid(); // Makes sure that we are executing using setuid
    __ruid = geteuid();
    setresgid(__rgid,__rgid,__rgid);
    setresuid(__ruid,__ruid,__ruid);
-   php = "/usr/bin/php";
+   php = "/usr/bin/php"; // Path to php bin, can't use an exploit like in level3
    phpfile = "/home/user/level06/level06.php";
    local_24 = 0;
    execve("/usr/bin/php",&php,__envp);
@@ -64,8 +64,15 @@ int main(undefined4 param_1,int param_2,char **param_3) {
 }
 ```
 
-## Victory
+
+## level06
  
-The vulnerability comes in the fact that the `level06` binary executes any file named `level06.php`, so we simply delete/move the original `level06.php` file and make a new file for `level06` to execute.
+The victory condition comes in the fact that the `level06` binary executes any file named `level06.php`, so we simply delete/move the original `level06.php` file and make a new file for `level06` to execute. 
+
+This means that the original `level06.php` is a huge bait ...
+
+## Victory
+
+After executing `level06` using our script, we get the flag.
  
 

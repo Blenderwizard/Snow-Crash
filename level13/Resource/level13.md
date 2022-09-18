@@ -2,7 +2,7 @@
  
 ## Info
  
-User level13 has a setuid (flag13) ELF binary `level13` in the root of their home directory. Attempting to run this file shows us a message stating we don't have the uid 4242.
+User `level13` has a setuid `flag13` ELF binary `level13` in the root of their home directory. Attempting to run this file shows us a message stating we don't have the uid 4242.
  
 Using Ghidra, we can get a better look at what the program is doing. There are two functions that seem interesting , main and ft_des.
  
@@ -81,7 +81,7 @@ char * ft_des(char *param_1) {
  
 ```
  
-ft_des looks like hell to reverse, and since there are no checks for uuid in it, I'll focus the attack on main.
+`ft_des` looks like hell to reverse, and since there are no checks for uuid in it, I'll focus the attack on main.
  
 ## Ghidra Magic
  

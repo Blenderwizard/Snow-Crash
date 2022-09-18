@@ -2,13 +2,19 @@
 
 ## Info
 
-User level03 has a setuid (flag03) ELF binary `level03` in their home directory.
+User level03 has a setuid `flag03` 32bit ELF binary `level03` in their home directory.
  
-## `level03`
+## level03
 
-Executing the file gives us the following output: Exploit me. Using the strings command we can see that one of the strings is "/usr/bin/env echo Exploit me". Which is most likely what is displaying the string "Exploit me". Meaning that the program uses either execve or system to execute echo`to display the text.
+Executing the file gives us the following output: `Exploit me`. Using the `string` command we can see two strings of intrest,`system` and `/usr/bin/env echo Exploit me`.
+
+`/usr/bin/env echo Exploit me` is what is the commands being run that shows the text `Exploit me` when the binary is run. `system` is most likely the syscall that is causing this to happen.
+
+## The exploit
  
-This is where the security vulnerability lies. Since echo is not hard coded as a path, we can define our own `echo` script and add it to the PATH env variable, executing our own script instead of the normal echo. We create the following file named `echo`:
+Since `echo` is not hard coded as a path, we can define our own `echo` script and add it's location to the `PATH` environment variable like so `export PATH=/location/of/our/echo:$PATH`, wich will cause the binary to execute our own script instead of the normal one.
+
+`echo`
 ``` bash
 #!/bin/bash
  
@@ -17,6 +23,6 @@ This is where the security vulnerability lies. Since echo is not hard coded as a
 
 ## Victory
  
-After editing the PATH variable with `export PATH=/location/of/our/echo:$PATH`, executing `level03` drops us into a shell for the user flag03. Running getflag gets us the flag.
+Executing `level03` drops us into a shell for `flag03`, we can confirm this with `whoami`. Running `getflag` gets us the flag.
  
 
