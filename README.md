@@ -11,9 +11,9 @@
 
 Snow-crash is a ISO CyberSecurity 42 project. A ISO file is given with the login to the first level. Each level contains a vulnerable program or method for finding a flag, which is the password for the next level.
 
-level0 to level9 are mandatory for "completing" the project, level10 to level14 are bonus levels.
+level0 to level9 are mandatory for "completing" the project, level10 to level14 are bonus levels. Each folder contains a writeup explaining how to solve the level and the level's flag.
 
-Each folder contains a writeup explaining how to solve the level and the level's flag.
+**For your enjoyment, if you are a 42 student and you haven't completed this project,**
 
-**For your enjoyment, if you are a 42 student and you haven't completed this project, DO NOT READ THE SOLUTIONS!**
+**DO NOT READ THE SOLUTIONS! THIS PROJECT IS BEST DONE BLIND!**
 
