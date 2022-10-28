@@ -2,6 +2,10 @@
     Snow-Crash: By <a href="https://github.com/Blenderwizard">Jolan "Blenderwizard" Rathelot</a>
 </h1>
 
+<p align="center">
+	<img src="readme_files/Intro.png"/>
+</p>
+
 
 ## What is this ?
 
